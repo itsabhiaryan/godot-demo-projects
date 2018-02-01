@@ -18,8 +18,8 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/keys = {
-"times": PoolFloatArray( 0 ),
-"transitions": PoolFloatArray( 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 4 ]
 }
@@ -29,8 +29,8 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/keys = {
-"times": PoolFloatArray( 3.47394 ),
-"transitions": PoolFloatArray( 1 ),
+"times": PoolRealArray( 3.47394 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ true ]
 }
@@ -40,8 +40,8 @@ tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/keys = {
-"times": PoolFloatArray( 3.20357, 5.07305 ),
-"transitions": PoolFloatArray( 1, 1 ),
+"times": PoolRealArray( 3.20357, 5.07305 ),
+"transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [  ],
 "method": "_pre_explode"
@@ -56,8 +56,8 @@ tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/keys = {
-"times": PoolFloatArray( 3.55, 4.32 ),
-"transitions": PoolFloatArray( 1, 1 ),
+"times": PoolRealArray( 3.55, 4.32 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
@@ -73,8 +73,8 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/keys = {
-"times": PoolFloatArray( 0, 0.75, 1.5, 2.25, 3, 3.75, 4.5, 5.25, 6, 6.75 ),
-"transitions": PoolFloatArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.75, 1.5, 2.25, 3, 3.75, 4.5, 5.25, 6, 6.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 5, 6, 5, 6, 5, 6, 7, 6, 7, 5 ]
 }
@@ -91,8 +91,8 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/keys = {
-"times": PoolFloatArray( 0, 0.25, 0.5, 0.75, 1, 1.25 ),
-"transitions": PoolFloatArray( 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75, 1, 1.25 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 0, 1, 2, 3, 4, 0 ]
 }
@@ -102,18 +102,19 @@ tracks/0/keys = {
 custom_solver_bias = 0.0
 radius = 14.0
 
-[sub_resource type="Gradient" id=6]
+[sub_resource type="Gradient" id=5]
 
-offsets = PoolFloatArray( 0, 0.564972, 1 )
+offsets = PoolRealArray( 0, 0.564972, 1 )
 colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0.915254, 1, 1, 1, 0 )
 
-[sub_resource type="GradientTexture" id=7]
+[sub_resource type="GradientTexture" id=6]
 
-gradient = SubResource( 6 )
+gradient = SubResource( 5 )
 width = 2048
 
-[sub_resource type="ParticlesMaterial" id=8]
+[sub_resource type="ParticlesMaterial" id=7]
 
+render_priority = 0
 trail_divisor = 1
 emission_shape = 1
 emission_sphere_radius = 20.0
@@ -141,7 +142,7 @@ angle = 0.0
 angle_random = 0.0
 scale = 2.4
 scale_random = 0.0
-color_ramp = SubResource( 7 )
+color_ramp = SubResource( 6 )
 hue_variation = 0.0
 hue_variation_random = 0.0
 anim_speed = 0.0
@@ -182,7 +183,7 @@ freeze_bodies = true
 pause_particles = false
 pause_animated_sprites = true
 process_parent = false
-fixed_process_parent = false
+physics_process_parent = false
 
 [node name="anim" type="AnimationPlayer" parent="."]
 
@@ -224,7 +225,7 @@ position = Vector2( -33.2868, -9.34363 )
 enabled = true
 exclude_parent = true
 cast_to = Vector2( 0, 45 )
-collision_layer = 1
+collision_mask = 1
 type_mask = 15
 
 [node name="raycast_right" type="RayCast2D" parent="."]
@@ -233,7 +234,7 @@ position = Vector2( 29.1987, -9.34363 )
 enabled = true
 exclude_parent = true
 cast_to = Vector2( 0, 45 )
-collision_layer = 1
+collision_mask = 1
 type_mask = 15
 
 [node name="Particles2D" type="Particles2D" parent="."]
@@ -247,12 +248,12 @@ preprocess = 0.0
 speed_scale = 1.0
 explosiveness = 0.86
 randomness = 0.0
-visibility_rect = Rect2( -100, -100, 200, 200 )
-local_coords = true
 fixed_fps = 0
 fract_delta = true
+visibility_rect = Rect2( -100, -100, 200, 200 )
+local_coords = true
 draw_order = 4
-process_material = SubResource( 8 )
+process_material = SubResource( 7 )
 texture = ExtResource( 3 )
 normal_map = null
 h_frames = 1

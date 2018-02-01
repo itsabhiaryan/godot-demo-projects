@@ -1,10 +1,23 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=3
+
 [application]
 
-icon = "res://icon.png"
-main_scene = "res://lightmask.tscn"
-name = "Using Lights As Mask"
+config/name="Using Lights as Mask"
+run/main_scene="res://lightmask.tscn"
+config/icon="res://icon.png"
+
+[gdnative]
+
+singletons=[  ]
 
 [rasterizer]
 
-shadow_filter = 3
-
+shadow_filter=3

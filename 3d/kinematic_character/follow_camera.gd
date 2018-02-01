@@ -12,7 +12,7 @@ var max_height = 2.0
 var min_height = 0
 
 
-func _fixed_process(dt):
+func _physics_process(dt):
 	var target = get_parent().global_transform.origin
 	var pos = global_transform.origin
 	var up = Vector3(0, 1, 0)
@@ -35,7 +35,7 @@ func _fixed_process(dt):
 	
 	pos = target + delta
 	
-	look_at_from_pos(pos, target, up)
+	look_at_from_position(pos, target, up)
 	
 	# Turn a little up or down
 	var t = transform
